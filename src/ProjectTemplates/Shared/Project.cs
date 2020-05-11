@@ -166,7 +166,7 @@ namespace Templates.Test.Helpers
             };
 
             var projectDll = Path.Combine(TemplateBuildDir, $"{ProjectName}.dll");
-            return new AspNetProcess(Output, TemplateOutputDir, projectDll, environment, hasListeningUri: hasListeningUri, logger: logger);
+            return new AspNetProcess(Output, TemplateOutputDir, projectDll, environment, published: false, hasListeningUri: hasListeningUri, logger: logger);
         }
 
         internal AspNetProcess StartPublishedProjectAsync(bool hasListeningUri = true)
@@ -181,7 +181,7 @@ namespace Templates.Test.Helpers
             };
 
             var projectDll = $"{ProjectName}.dll";
-            return new AspNetProcess(Output, TemplatePublishDir, projectDll, environment, hasListeningUri: hasListeningUri);
+            return new AspNetProcess(Output, TemplatePublishDir, projectDll, environment, published: true, hasListeningUri: hasListeningUri);
         }
 
         internal async Task<ProcessResult> RunDotNetEfCreateMigrationAsync(string migrationName)
